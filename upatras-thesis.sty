@@ -1,0 +1,160 @@
+\ProvidesPackage{upatras-thesis}
+
+%Packages in use
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{ulem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,
+                chains,
+                positioning,
+                shapes.geometric
+                }
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{url}
+\usepackage{xltxtra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{fixltx2e}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{polyglossia}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{etoolbox}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{mathdots}
+\usepackage[backend=biber,language=english,style=numeric, sorting=none]{biblatex}
+%\usepackage[subfigure,titles]{tocloft} % Not sure if needed
+\usepackage{fancyhdr}
+%\usepackage[Rejne]{fncychap}
+\usepackage[toc,page]{appendix}
+\usepackage{listings}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[bottom]{footmisc}
+\usepackage{subcaption}
+\usepackage{float}% just for the example
+\usepackage[hidelinks]{hyperref}
+\usepackage[sort=use,nogroupskip,acronym,indexonlyfirst,nopostdot,toc]{glossaries}
+
+% Font settings
+\setmainfont[]{GFS Didot}
+\newfontfamily\greekfont[Script=Greek,Mapping=tex-text]{GFS Didot}
+\newfontfamily\greekfontsf[Script=Greek,Mapping=tex-text]{GFS Didot}
+\newfontfamily\greekfonttt{Courier New}
+\setdefaultlanguage[numerals=arabic]{greek}
+\setotherlanguage{english}
+%\setmonofont{Courier New}
+
+\definecolor{commentgreen}{RGB}{2,112,10}
+\definecolor{eminence}{RGB}{108,48,130}
+\definecolor{weborange}{RGB}{255,165,0}
+\definecolor{frenchplum}{RGB}{129,20,83}
+
+%Code listing settings
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\ttfamily\small,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  tabsize=3,	                   % sets default tabsize to 2 spaces
+  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+  commentstyle=\color{commentgreen},
+  keywordstyle=\color{eminence},
+  stringstyle=\color{red},
+  emph={int,char,double,float,unsigned,void,bool},
+  emphstyle={\color{blue}},
+  numbers=left,
+  stepnumber=1,
+}
+
+
+% Paths
+\graphicspath{{images/}}
+
+% Margins and dimensions
+\setlength{\parindent}{1.2cm}
+% \setlength{\parskip}{1em}
+\setlength{\headsep}{0.5in}
+\setlength{\headheight}{14pt}
+\linespread{1.5}
+
+% Misc settings
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\setlength{\headheight}{14pt}
+
+%Fancy header setup
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+
+% New commands
+% New blank page comman
+\newcommand{\newblankpage}{\newpage\null\thispagestyle{empty}\newpage}
+
+%TOC identation
+\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% Default: 1.5em/2.3em
+\let\l@table\l@figure
+\makeatother
+
+% Itemize
+
+\setlist{
+  listparindent=\parindent,
+  parsep=0pt,
+}
+
+%Remove vertical space before chapter
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter head
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
+\makeatother
+
+
+\makeatletter
+
+%\patchcmd{\printglossary}{\@starttoc}{\vspace{-1cm}\@starttoc}{}{}
+
+%\patchcmd{\tableofcontents}{\@starttoc{toc}}{\vskip-2cm\@starttoc{toc}}{}{}
+%\patchcmd{\listoffigures}{\@starttoc{lof}}{\vskip-2cm\@starttoc{lof}}{}{}
+
+%\patchcmd{\printbibliography}{\printbibliography{}}{\vskip-2cm\@printbibliography{}}{}{}
+%\patchcmd{\printbibliography}{\printbibliography}{\vspace{-2cm}\@printbibliography}{}{}
+
+%\patchcmd{\listoffigures}{\@starttoc}{\vspace{-1cm}\@starttoc}{}{}
+
+\makeatother
+
+%Experimental settings go here
+\raggedbottom

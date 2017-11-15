@@ -1,10 +1,10 @@
-#Thesis Template in LaTeX
+# Thesis Template in LaTeX
 
-##Γενικά
+## Γενικά
 
 Τη βάση αυτού του template αποτέλεσε η δουλειά του [Νώντα Ροντογιάννη](https://github.com/eparon/ece-upatras-thesis-template). Έχουν γίνει ορισμένες τροποποιήσεις και αλλαγές στα packages που χρησιμοποιήθηκαν καθώς και στις ρυθμίσεις της απεικόνισης του κειμένου.
 
-##LaTeX environment
+## LaTeX environment
 
 Απαραίτητη προϋπόθεση είναι η εγκατάσταση κάποια έκδοσης του LaTeX στον υπολογιστή σας. Υπάρχει και η επιλογή χρήσης κάποιου online editor, όπως το Sharelatex και Overleaf.
 
@@ -21,7 +21,7 @@ Perl: Strawberry perl (Για τη χρήση abbreviations & glossary)
 
 Το template πρέπει να γίνει compiled με το `xelatex`. Θα χρειαστούν 2 compiles για τη σωστή απεικόνιση των συνδέσμων, περιεχομένων κά. Για τη σωστή απεικόνιση των ακρωνυμίων είναι αναγκαία η χρήση της `Strawberry Perl`.
 
-##Χρήση του template
+## Χρήση του template
 
 Στο αρχείο `main.tex` πρέπει να οριστούν οι εξής μεταβλητές:
 

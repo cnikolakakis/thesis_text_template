@@ -1,22 +1,42 @@
 {
  "version": "0.1.0",
  "isShellCommand": true,
- "suppressTaskName": true,
+ "suppressTaskName": false,
  "showOutput": "always",
- "tasks": [{
-         "taskName": "Build PDF",
-         "command": "xelatex",
-         "isBuildCommand": true,
-         "args": [
-             "-interaction=nonstopmode",
-             "-file-line-error",
-             "main.tex"
-         ]}, {
-         "taskName": "Build BibTex",
-         "command": "bibtex",
-         "isTestCommand": true,
-         "args": ["main.aux"]
-         }]
+ "osx":{
+    "command": "sh",
+    "args": ["-c"],
+    "tasks": [
+            {
+            "taskName": "Build",
+            "args": ["build.sh"],
+            "isBuildCommand": true
+            }
+        ]
+ },
+ "windows":{
+    "command": "cmd",
+    "args": ["/C"],
+    "tasks": [
+            {
+            "taskName": "Build",
+            "args": ["build.bat"],
+            "isBuildCommand": true
+            }
+        ]
+ },
+ "linux":{
+    "command": "sh",
+    "args": ["-c"],
+    "tasks": [
+            {
+            "taskName": "Build",
+            "args": ["build.sh"],
+            "isBuildCommand": true
+            }
+        ]
+ }
+ 
 }
 
 

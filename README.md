@@ -11,13 +11,12 @@
 
 ##### Windows
 
-```
-Περιβάλλον LaTeX:MiKTeX
-Editor : Texmaker
-Perl: Strawberry perl (Για τη χρήση abbreviations & glossary)
-```
 
-Αντί για τον `texmaker` μπορεί να χρησιμοποιηθεί και το `Sublime Text` με τη βοήθεια του πακέτου `LaTeXTools`.
+`Περιβάλλον LaTeX:` [MiKTeX](https://miktex.org/download)  
+`Editor:` [Texmaker](http://www.xm1math.net/texmaker/)  
+`Perl:` [Strawberry perl]( http://strawberryperl.com/) -- Για τη χρήση abbreviations & glossary
+
+Αντί για τον `texmaker` μπορεί να χρησιμοποιηθεί και το `Sublime Text` με τη βοήθεια του πακέτου [LaTeXTools](https://github.com/SublimeText/LaTeXTools) καθώς και το Visual Studio Code με τη βοήθεια του πακέτου [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
 
 Το template πρέπει να γίνει compiled με το `xelatex`. Θα χρειαστούν 2 compiles για τη σωστή απεικόνιση των συνδέσμων, περιεχομένων κά. Για τη σωστή απεικόνιση των ακρωνυμίων είναι αναγκαία η χρήση της `Strawberry Perl`.
 
@@ -56,21 +55,22 @@ Perl: Strawberry perl (Για τη χρήση abbreviations & glossary)
 
 Με την εντολή `\gls{όνομα ακρωνυμίου-ορολογίας}` πραγματοποιείται η εισαγωγή τους στο κείμενο και στον πίνακα ορολογίας.
 
+Για τη δημιουργία των απαραίτητων αρχείων είναι απαραίτητη η πραγματοποίηση ενός compile και στη συνέχεια η εκτέλεση της εντολής `makeglossaries main` μέσω του `cmd` στο φάκελο που βρίσκονται τα αρχεία. Τέλος, για την πλήρη απεικόνιση του κειμένου απαιτείται ένα τελευταίο compile.
+
 #### Βιβλιογραφία
 
 Για την εισαγωγή βιβλιογραφίας χρησιμοποιείται το πακέτο `biblatex`. Τροποποείται κατάλληλα το αρχείο `mybib.bib` και στη συνέχεια μετά από το πρώτο compile είναι απαραίτητη η εκτέλεση της εντολής `biber main` ώστε να δημιουργηθούν τα απαραίτητα αρχεία.
-
-Για τη δημιουργία των απαραίτητων αρχείων είναι απαραίτητη η πραγματοποίηση ενός compile και στη συνέχεια η εκτέλεση της εντολής `makeglossaries main` μέσω του `cmd` στο φάκελο που βρίσκονται τα αρχεία. Τέλος, για την πλήρη απεικόνιση του κειμένου απαιτείται ένα τελευταίο compile.
 
 #### Ελληνική γλώσσα
 
 Για τη χρήση της ελληνικής γλώσσας χρησιμοποιήθηκε το πακέτο `fontspec` και `polyglossia`. Δε χρειάζεται εναλλαγή μέσω εντολής για την διαφοροποίηση της γλώσσας εισαγωγής. Ορίζεται αρχικά η κύρια γλώσσα εισαγωγής και οι γραμματοσειρές όπως φαίνεται στη συνέχεια.
 
 ```
-\setmainfont[]{GFS Didot}
-\newfontfamily\greekfont[Script=Greek,Mapping=tex-text]{GFS Didot}
-\newfontfamily\greekfontsf[Script=Greek,Mapping=tex-text]{GFS Didot}
-\newfontfamily\greekfonttt{Courier New}
+% Font settings
+\setmainfont[Path=font/]{GFSDidot.otf}
+\newfontfamily\greekfont[Path=font/, Script=Greek,Mapping=tex-text]{GFSDidot.otf}
+\newfontfamily\greekfontsf[Path=font/, Script=Greek,Mapping=tex-text]{GFSDidot.otf}
+% \newfontfamily\greekfonttt{Courier New}
 \setdefaultlanguage[numerals=arabic]{greek}
 \setotherlanguage{english}
 ```
